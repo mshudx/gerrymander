@@ -11,7 +11,7 @@ namespace Gerrymander.VoteGenerator
     {
         static void Main(string[] args)
         {
-            Vote vote = new Vote("Budapest XIV", "Ilosvai Selymes tér", "0001", "DK", "Karácsony Gergely");
+
         }
     }
 }
