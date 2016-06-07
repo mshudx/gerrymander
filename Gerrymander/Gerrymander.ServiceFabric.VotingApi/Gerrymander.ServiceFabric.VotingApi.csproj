@@ -112,6 +112,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gerrymander.Common\Gerrymander.Common.csproj">
+      <Project>{05aeefa5-1267-49a1-9755-0c4c2cf35209}</Project>
+      <Name>Gerrymander.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

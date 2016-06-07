@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gerrymander.Common;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace Gerrymander.ServiceFabric.VotingApi.Controllers
             return "Echo: " + value;
         }
 
-        public void Post([FromBody]string value)
+        public string Post([FromBody]Vote vote)
         {
-
+            return "Received vote for " + vote.Candidate + ". Excellent choice!";
         }
     }
 }
