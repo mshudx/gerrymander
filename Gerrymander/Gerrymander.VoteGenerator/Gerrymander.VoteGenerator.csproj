@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E4CE0AB-512D-40A7-B57E-6900C2861742}</ProjectGuid>
+    <ProjectGuid>{F05B8BD5-2275-4DA7-86EE-6FF22587E596}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gerrymander.VoteGenerator</RootNamespace>
