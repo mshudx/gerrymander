@@ -1,18 +1,29 @@
 ﻿using Gerrymander.ServiceFabric.ResultsApiService.Model;
+using Gerrymander.ServiceFabric.VotingSite.Context;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Linq;
 
 namespace Gerrymander.ServiceFabric.ResultsApiService.Controllers
 {
     [RoutePrefix("api/results")]
     public class ResultsController : ApiController
     {
+        private readonly gerrymanderEntities context;
+
+        public ResultsController()
+        {
+            context = new gerrymanderEntities();
+        }
+
         [Route("")]
         [HttpGet]
         public async Task<Results> Get()
         {
-            var result = new Results() { Votes = 1 };
+            var votes = context.Candidates.Sum(c => c.VoteCount);
+            var leadinParty = context.Parties.OrderByDescending(p => p.Candidates.Sum(c => c.VoteCount)).First();
+            var result = new Results() { Votes = votes, LeadingParty = leadinParty.Name };
             return result;
         }
 

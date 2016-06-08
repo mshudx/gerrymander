@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b7c4ebd12a5845beba1f121d9d198765" Name="Diagram1">
+        <EntityTypeShape EntityType="gerrymanderModel.Candidate" Width="1.5" PointX="3.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gerrymanderModel.Party" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gerrymanderModel.VotingDistrict" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gerrymanderModel.VotingSite" Width="1.5" PointX="3.5" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="gerrymanderModel.FK_Candidates_Parties" ManuallyRouted="false" />
+        <AssociationConnector Association="gerrymanderModel.FK_Candidates_VotingDistricts" ManuallyRouted="false" />
+        <AssociationConnector Association="gerrymanderModel.FK_VotingSites_VotingDistricts" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
