@@ -13,7 +13,39 @@ namespace Gerrymander.VoteGenerator
     {
         static void Main(string[] args)
         {
-            SubmitManualVote();
+            //SubmitManualVote();
+            SubmitRandomVotes(1);
+            Console.ReadLine();
+        }
+
+        private static void SubmitRandomVotes(int voteCount)
+        {
+            var votingDistricts = GetVotingDistricts();
+            for(var currentVote = 0; currentVote < voteCount; currentVote++)
+            {
+                // Select a random voting district
+                Random random = new Random();
+                int currentDistrictId = random.Next(votingDistricts.Count);
+                var votingDistrict = votingDistricts[currentDistrictId];
+
+                // Select a random voting site in the voting district
+                var votingSites = GetVotingSitesByVotingDistrict(votingDistrict.Id);
+                int currentSiteId = random.Next(votingSites.Count);
+                var votingSite = votingSites[currentSiteId];
+
+                // Select a random candidate in the voting district
+                var candidates = GetCandidatesByVotingDistrict(votingDistrict.Id);
+                int currentCandidateId = random.Next(candidates.Count);
+                var candidate = candidates[currentCandidateId];
+
+                // Get the party the candidate belongs to
+                var party = GetPartyByCandidate(candidate.Id);
+
+                // Submit the vote
+                SubmitVote(votingDistrict.Name, votingSite.Name, "(test ballot box)", party.Name, candidate.Name);
+
+                Console.WriteLine("Vote submitted for {0}, {1}, {2}, {3}, {4}", votingDistrict.Name, votingSite.Name, "(test ballot box)", party.Name, candidate.Name);
+            }
         }
 
         private static void SubmitManualVote()
@@ -41,6 +73,33 @@ namespace Gerrymander.VoteGenerator
             var serializedVote = JsonConvert.SerializeObject(vote);
             HttpContent content = new StringContent(serializedVote, Encoding.UTF8, "application/json");
             var result = await client.PostAsync(uri, content);
+            client.Dispose();
+        }
+
+        private static List<VotingDistrict> GetVotingDistricts()
+        {
+            gerrymanderEntities db = new gerrymanderEntities();
+            return db.VotingDistricts.ToList();
+        }
+
+        private static List<VotingSite> GetVotingSitesByVotingDistrict(int votingDistrictId)
+        {
+            gerrymanderEntities db = new gerrymanderEntities();
+            return db.VotingSites.Where(s => s.VotingDistrict == votingDistrictId).ToList();
+        }
+
+        private static List<Candidate> GetCandidatesByVotingDistrict(int votingDistrictId)
+        {
+            gerrymanderEntities db = new gerrymanderEntities();
+            return db.Candidates.Where(d => d.VotingDistrict == votingDistrictId).ToList();
+        }
+
+        private static Party GetPartyByCandidate(int candidateId)
+        {
+            gerrymanderEntities db = new gerrymanderEntities();
+            var candidate = db.Candidates.First(c => c.Id == candidateId);
+            
+            return null;
         }
     }
 }

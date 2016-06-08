@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gerrymanderModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Candidates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Party" Type="int" Nullable="false" />
+          <Property Name="VotingDistrict" Type="int" Nullable="false" />
+          <Property Name="VoteCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VotingDistricts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VotingSites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VotingDistrict" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Candidates_Parties">
+          <End Role="Parties" Type="Self.Parties" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_VotingDistricts">
+          <End Role="VotingDistricts" Type="Self.VotingDistricts" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VotingDistricts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="VotingDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VotingSites_VotingDistricts">
+          <End Role="VotingDistricts" Type="Self.VotingDistricts" Multiplicity="1" />
+          <End Role="VotingSites" Type="Self.VotingSites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VotingDistricts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VotingSites">
+              <PropertyRef Name="VotingDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gerrymanderModelStoreContainer">
+          <EntitySet Name="Candidates" EntityType="Self.Candidates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parties" EntityType="Self.Parties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VotingDistricts" EntityType="Self.VotingDistricts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VotingSites" EntityType="Self.VotingSites" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Candidates_Parties" Association="Self.FK_Candidates_Parties">
+            <End Role="Parties" EntitySet="Parties" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_VotingDistricts" Association="Self.FK_Candidates_VotingDistricts">
+            <End Role="VotingDistricts" EntitySet="VotingDistricts" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VotingSites_VotingDistricts" Association="Self.FK_VotingSites_VotingDistricts">
+            <End Role="VotingDistricts" EntitySet="VotingDistricts" />
+            <End Role="VotingSites" EntitySet="VotingSites" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gerrymanderModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Party" Type="Int32" Nullable="false" />
+          <Property Name="VotingDistrict" Type="Int32" Nullable="false" />
+          <Property Name="VoteCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Party1" Relationship="Self.FK_Candidates_Parties" FromRole="Candidates" ToRole="Parties" />
+          <NavigationProperty Name="VotingDistrict1" Relationship="Self.FK_Candidates_VotingDistricts" FromRole="Candidates" ToRole="VotingDistricts" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_Parties" FromRole="Parties" ToRole="Candidates" />
+        </EntityType>
+        <EntityType Name="VotingDistrict">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidates_VotingDistricts" FromRole="VotingDistricts" ToRole="Candidates" />
+          <NavigationProperty Name="VotingSites" Relationship="Self.FK_VotingSites_VotingDistricts" FromRole="VotingDistricts" ToRole="VotingSites" />
+        </EntityType>
+        <EntityType Name="VotingSite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VotingDistrict" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VotingDistrict1" Relationship="Self.FK_VotingSites_VotingDistricts" FromRole="VotingSites" ToRole="VotingDistricts" />
+        </EntityType>
+        <Association Name="FK_Candidates_Parties">
+          <End Role="Parties" Type="Self.Party" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidates_VotingDistricts">
+          <End Role="VotingDistricts" Type="Self.VotingDistrict" Multiplicity="1" />
+          <End Role="Candidates" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VotingDistricts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Candidates">
+              <PropertyRef Name="VotingDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VotingSites_VotingDistricts">
+          <End Role="VotingDistricts" Type="Self.VotingDistrict" Multiplicity="1" />
+          <End Role="VotingSites" Type="Self.VotingSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VotingDistricts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VotingSites">
+              <PropertyRef Name="VotingDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gerrymanderEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="Parties" EntityType="Self.Party" />
+          <EntitySet Name="VotingDistricts" EntityType="Self.VotingDistrict" />
+          <EntitySet Name="VotingSites" EntityType="Self.VotingSite" />
+          <AssociationSet Name="FK_Candidates_Parties" Association="Self.FK_Candidates_Parties">
+            <End Role="Parties" EntitySet="Parties" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidates_VotingDistricts" Association="Self.FK_Candidates_VotingDistricts">
+            <End Role="VotingDistricts" EntitySet="VotingDistricts" />
+            <End Role="Candidates" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VotingSites_VotingDistricts" Association="Self.FK_VotingSites_VotingDistricts">
+            <End Role="VotingDistricts" EntitySet="VotingDistricts" />
+            <End Role="VotingSites" EntitySet="VotingSites" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gerrymanderModelStoreContainer" CdmEntityContainer="gerrymanderEntities">
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="gerrymanderModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Party" ColumnName="Party" />
+                <ScalarProperty Name="VotingDistrict" ColumnName="VotingDistrict" />
+                <ScalarProperty Name="VoteCount" ColumnName="VoteCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parties">
+            <EntityTypeMapping TypeName="gerrymanderModel.Party">
+              <MappingFragment StoreEntitySet="Parties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VotingDistricts">
+            <EntityTypeMapping TypeName="gerrymanderModel.VotingDistrict">
+              <MappingFragment StoreEntitySet="VotingDistricts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VotingSites">
+            <EntityTypeMapping TypeName="gerrymanderModel.VotingSite">
+              <MappingFragment StoreEntitySet="VotingSites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VotingDistrict" ColumnName="VotingDistrict" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

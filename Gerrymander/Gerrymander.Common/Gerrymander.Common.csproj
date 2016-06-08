@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C23AD6B6-02E2-486A-A9C7-DA62C8609FA5}</ProjectGuid>
+    <ProjectGuid>{05AEEFA5-1267-49A1-9755-0C4C2CF35209}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gerrymander.Common</RootNamespace>
