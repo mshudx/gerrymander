@@ -2,6 +2,7 @@
 using Owin;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Swashbuckle.Application;
 
 namespace Gerrymander.ServiceFabric.ResultsApiService
 {
@@ -22,6 +23,10 @@ namespace Gerrymander.ServiceFabric.ResultsApiService
                 Formatting = Formatting.Indented,
                 NullValueHandling = NullValueHandling.Ignore,
             };
+            config
+                .EnableSwagger(c => c.SingleApiVersion("v1", "Gerrymander Results API"))
+                .EnableSwaggerUi();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
