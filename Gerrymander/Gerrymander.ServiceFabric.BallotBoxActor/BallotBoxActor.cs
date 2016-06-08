@@ -8,6 +8,10 @@ using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
 using Gerrymander.ServiceFabric.BallotBoxActor.Interfaces;
 using Gerrymander.Common;
+using Gerrymander.ServiceFabric.VotingSite;
+using Microsoft.ServiceFabric.Services.Remoting.Client;
+using Microsoft.ServiceFabric.Services.Client;
+using Gerrymander.ServiceFabric.VotingSite.Interfaces;
 
 namespace Gerrymander.ServiceFabric.BallotBoxActor
 {
@@ -65,8 +69,11 @@ namespace Gerrymander.ServiceFabric.BallotBoxActor
             }
             else
             {
+                IVotingSite votingSiteClient = ServiceProxy.Create<IVotingSite>(
+                   serviceUri: new Uri("fabric:/Gerrymander.ServiceFabric/VotingSiteService"),
+                   partitionKey: new ServicePartitionKey(vote.VotingDistrict));
+                await votingSiteClient.StoreVoteAsync(vote);
                 return null;
-                // TODO forward to Voting Site SFS
             }
         }
 

@@ -10,6 +10,7 @@ using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Data;
+using Gerrymander.ServiceFabric.VotingSite.Interfaces;
 
 namespace Gerrymander.ServiceFabric.VotingSite
 {
@@ -51,7 +52,7 @@ namespace Gerrymander.ServiceFabric.VotingSite
         /// </summary>
         /// <param name="vote"></param>
         /// <returns></returns>
-        public async Task StoreVote(Vote vote)
+        public async Task StoreVoteAsync(Vote vote)
         {
             ITransaction transaction = null;
             try

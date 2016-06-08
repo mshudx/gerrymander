@@ -65,7 +65,6 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IVotingSite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VotingSite.cs" />
     <Compile Include="Program.cs" />
@@ -81,6 +80,10 @@
     <ProjectReference Include="..\Gerrymander.Common\Gerrymander.Common.csproj">
       <Project>{05aeefa5-1267-49a1-9755-0c4c2cf35209}</Project>
       <Name>Gerrymander.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gerrymander.ServiceFabric.VotingSite.Interfaces\Gerrymander.ServiceFabric.VotingSite.Interfaces.csproj">
+      <Project>{ee3b475d-9ecd-40e2-bcb9-cc3001055425}</Project>
+      <Name>Gerrymander.ServiceFabric.VotingSite.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

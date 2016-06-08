@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gerrymander.ServiceFabric.VotingSite
+namespace Gerrymander.ServiceFabric.VotingSite.Interfaces
 {
     public interface IVotingSite : IService
     {
-        Task StoreVote(Vote vote);
+        Task StoreVoteAsync(Vote vote);
         Task<List<Vote>> GetAllStoredVotes();
     }
 }
