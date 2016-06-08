@@ -11,6 +11,5 @@ namespace Gerrymander.ServiceFabric.VotingSite.Interfaces
     public interface IVotingSite : IService
     {
         Task StoreVoteAsync(Vote vote);
-        Task<List<Vote>> GetAllStoredVotes();
     }
 }

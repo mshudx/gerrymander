@@ -6,6 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
+using Gerrymander.ServiceFabric.VotingSite.Interfaces;
+using Microsoft.ServiceFabric.Services.Remoting.Client;
+using Microsoft.ServiceFabric.Services.Client;
 
 namespace Gerrymander.ServiceFabric.ResultsApiService
 {
@@ -30,9 +33,13 @@ namespace Gerrymander.ServiceFabric.ResultsApiService
             };
         }
 
-        protected override Task RunAsync(CancellationToken cancellationToken)
+        protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            return base.RunAsync(cancellationToken);
+            IVotingSite votingSiteClient = ServiceProxy.Create<IVotingSite>(
+                serviceUri: new Uri("fabric:/Gerrymander.ServiceFabric/VotingSiteService"),
+                partitionKey: new ServicePartitionKey(""));
+
+            await base.RunAsync(cancellationToken);
         }
     }
 }
