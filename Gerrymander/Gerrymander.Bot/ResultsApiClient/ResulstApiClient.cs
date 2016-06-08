@@ -9,7 +9,7 @@ using Microsoft.Rest;
 
 namespace Gerrymander.ResulstApi
 {
-    public partial class ResulstApiClient : ServiceClient<ResulstApiClient>, IResulstApiClient
+    public partial class ResultsApiClient : ServiceClient<ResultsApiClient>, IResultsApiClient
     {
         private Uri _baseUri;
         
@@ -41,9 +41,9 @@ namespace Gerrymander.ResulstApi
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResulstApiClient class.
+        /// Initializes a new instance of the ResultsApiClient class.
         /// </summary>
-        public ResulstApiClient()
+        public ResultsApiClient()
             : base()
         {
             this._results = new ResultsOperations(this);
@@ -51,13 +51,13 @@ namespace Gerrymander.ResulstApi
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResulstApiClient class.
+        /// Initializes a new instance of the ResultsApiClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The set of delegating handlers to insert in the http
         /// client pipeline.
         /// </param>
-        public ResulstApiClient(params DelegatingHandler[] handlers)
+        public ResultsApiClient(params DelegatingHandler[] handlers)
             : base(handlers)
         {
             this._results = new ResultsOperations(this);
@@ -65,7 +65,7 @@ namespace Gerrymander.ResulstApi
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResulstApiClient class.
+        /// Initializes a new instance of the ResultsApiClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -74,7 +74,7 @@ namespace Gerrymander.ResulstApi
         /// Optional. The set of delegating handlers to insert in the http
         /// client pipeline.
         /// </param>
-        public ResulstApiClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
+        public ResultsApiClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers)
             : base(rootHandler, handlers)
         {
             this._results = new ResultsOperations(this);
@@ -82,7 +82,7 @@ namespace Gerrymander.ResulstApi
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResulstApiClient class.
+        /// Initializes a new instance of the ResultsApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -91,7 +91,7 @@ namespace Gerrymander.ResulstApi
         /// Optional. The set of delegating handlers to insert in the http
         /// client pipeline.
         /// </param>
-        public ResulstApiClient(Uri baseUri, params DelegatingHandler[] handlers)
+        public ResultsApiClient(Uri baseUri, params DelegatingHandler[] handlers)
             : this(handlers)
         {
             if (baseUri == null)
@@ -102,7 +102,7 @@ namespace Gerrymander.ResulstApi
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResulstApiClient class.
+        /// Initializes a new instance of the ResultsApiClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials for authenticating with the service.
@@ -111,7 +111,7 @@ namespace Gerrymander.ResulstApi
         /// Optional. The set of delegating handlers to insert in the http
         /// client pipeline.
         /// </param>
-        public ResulstApiClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
+        public ResultsApiClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
             : this(handlers)
         {
             if (credentials == null)
@@ -127,7 +127,7 @@ namespace Gerrymander.ResulstApi
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResulstApiClient class.
+        /// Initializes a new instance of the ResultsApiClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -139,7 +139,7 @@ namespace Gerrymander.ResulstApi
         /// Optional. The set of delegating handlers to insert in the http
         /// client pipeline.
         /// </param>
-        public ResulstApiClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
+        public ResultsApiClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers)
             : this(handlers)
         {
             if (baseUri == null)

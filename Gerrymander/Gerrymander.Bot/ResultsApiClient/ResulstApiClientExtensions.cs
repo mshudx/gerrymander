@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Gerrymander.ResulstApi
 {
-    public static partial class ResulstApiClientExtensions
+    public static partial class ResultsApiClientExtensions
     {
     }
 }

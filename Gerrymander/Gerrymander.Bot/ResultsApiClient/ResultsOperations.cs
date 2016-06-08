@@ -15,7 +15,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Gerrymander.ResulstApi
 {
-    internal partial class ResultsOperations : IServiceOperations<ResulstApiClient>, IResultsOperations
+    internal partial class ResultsOperations : IServiceOperations<ResultsApiClient>, IResultsOperations
     {
         /// <summary>
         /// Initializes a new instance of the ResultsOperations class.
@@ -23,17 +23,17 @@ namespace Gerrymander.ResulstApi
         /// <param name='client'>
         /// Reference to the service client.
         /// </param>
-        internal ResultsOperations(ResulstApiClient client)
+        internal ResultsOperations(ResultsApiClient client)
         {
             this._client = client;
         }
         
-        private ResulstApiClient _client;
+        private ResultsApiClient _client;
         
         /// <summary>
-        /// Gets a reference to the Gerrymander.ResulstApi.ResulstApiClient.
+        /// Gets a reference to the Gerrymander.ResulstApi.ResultsApiClient.
         /// </summary>
-        public ResulstApiClient Client
+        public ResultsApiClient Client
         {
             get { return this._client; }
         }

@@ -8,7 +8,7 @@ using Microsoft.Rest;
 
 namespace Gerrymander.ResulstApi
 {
-    public partial interface IResulstApiClient : IDisposable
+    public partial interface IResultsApiClient : IDisposable
     {
         /// <summary>
         /// The base URI of the service.

@@ -16,12 +16,12 @@ namespace Gerrymander.Bot
     public class MessagesController : ApiController
     {
         private readonly LuisClient luisClient;
-        private readonly IResulstApiClient resultsApiClient;
+        private readonly IResultsApiClient resultsApiClient;
 
         public MessagesController()
         {
             luisClient = new LuisClient(ConfigurationManager.AppSettings["LuisId"], ConfigurationManager.AppSettings["LuisKey"]);
-            resultsApiClient = new ResulstApiClient(new Uri(ConfigurationManager.AppSettings["ResultsApiUri"]));
+            resultsApiClient = new ResultsApiClient(new Uri(ConfigurationManager.AppSettings["ResultsApiUri"]));
         }
         /// <summary>
         /// POST: api/Messages
