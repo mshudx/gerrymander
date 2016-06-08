@@ -66,7 +66,7 @@ namespace Gerrymander.ServiceFabric.BallotBoxActor
             else
             {
                 IVotingSite votingSiteClient = ServiceProxy.Create<IVotingSite>(
-                   serviceUri: new Uri("fabric:/Gerrymander.ServiceFabric/VotingSiteService"),
+                   serviceUri: new Uri("fabric:/Gerrymander.ServiceFabric/VotingSite"),
                    partitionKey: new ServicePartitionKey(vote.VotingDistrict));
                 await votingSiteClient.StoreVoteAsync(vote);
                 return null;
