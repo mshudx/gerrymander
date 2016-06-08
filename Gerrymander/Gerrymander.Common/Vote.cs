@@ -67,7 +67,7 @@ namespace Gerrymander.Common
         public Vote()
         {
             VoteId = Guid.NewGuid();
-            TimeOfVoting = DateTime.Now;
+            TimeOfVoting = DateTime.UtcNow.AddHours(1.0);
         }
 
         public Vote(string votingDistrict, string votingSite, string ballotBoxId, string party, string candidate) : this()

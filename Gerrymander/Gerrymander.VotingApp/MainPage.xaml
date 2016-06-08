@@ -8,6 +8,30 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock>Please select a voting district.</TextBlock>
+            <ComboBox>
+                <ComboBoxItem>Voting District 1</ComboBoxItem>
+                <ComboBoxItem>Voting District 2</ComboBoxItem>
+                <ComboBoxItem>Voting District 3</ComboBoxItem>
+            </ComboBox>
+            <TextBlock>Please select a voting site.</TextBlock>
+            <ComboBox>
+                <ComboBoxItem>Voting Site 1</ComboBoxItem>
+                <ComboBoxItem>Voting Site 2</ComboBoxItem>
+                <ComboBoxItem>Voting Site 3</ComboBoxItem>
+            </ComboBox>
+            <TextBlock>Please select a candidate.</TextBlock>
+            <ListBox>
+                <ListBoxItem>Candidate 1</ListBoxItem>
+                <ListBoxItem>Candidate 2</ListBoxItem>
+                <ListBoxItem>Candidate 3</ListBoxItem>
+                <ListBoxItem>Candidate 4</ListBoxItem>
+                <ListBoxItem>Candidate 5</ListBoxItem>
+            </ListBox>
+            <TextBlock>Please click/tap VOTE to submit your vote.</TextBlock>
+            <Button>VOTE</Button>
+        </StackPanel>
 
     </Grid>
 </Page>
