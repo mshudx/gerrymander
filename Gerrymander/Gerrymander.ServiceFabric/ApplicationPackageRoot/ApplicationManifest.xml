@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Gerrymander.ServiceFabricType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
+      <Parameter Name="ResultsApiService_InstanceCount" DefaultValue="-1" />
       <Parameter Name="VotingApi_InstanceCount" DefaultValue="-1" />
       <Parameter Name="BallotBoxActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="BallotBoxActorService_MinReplicaSetSize" DefaultValue="2" />
       <Parameter Name="BallotBoxActorService_TargetReplicaSetSize" DefaultValue="3" />
    </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="Gerrymander.ServiceFabric.ResultsApiServicePkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+   </ServiceManifestImport>
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="Gerrymander.ServiceFabric.BallotBoxActorPkg" ServiceManifestVersion="1.0.0" />
    </ServiceManifestImport>
@@ -14,6 +19,11 @@
       <ConfigOverrides />
    </ServiceManifestImport>
    <DefaultServices>
+      <Service Name="ResultsApiService">
+         <StatelessService ServiceTypeName="ResultsApiServiceType" InstanceCount="[ResultsApiService_InstanceCount]">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
       <Service Name="VotingApi">
          <StatelessService ServiceTypeName="VotingApiType" InstanceCount="[VotingApi_InstanceCount]">
             <SingletonPartition />
