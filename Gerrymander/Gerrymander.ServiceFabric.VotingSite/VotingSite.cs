@@ -9,6 +9,7 @@ using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
+using Microsoft.ServiceFabric.Data;
 
 namespace Gerrymander.ServiceFabric.VotingSite
 {
@@ -17,6 +18,7 @@ namespace Gerrymander.ServiceFabric.VotingSite
     /// </summary>
     internal sealed class VotingSite : StatefulService, IVotingSite
     {
+        private CancellationToken cancellationToken;
         private const string storedVotesDictionaryName = "storedVotes";
         private IReliableDictionary<string, Vote> storedVotes;
 
@@ -26,6 +28,8 @@ namespace Gerrymander.ServiceFabric.VotingSite
 
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
+            this.cancellationToken = cancellationToken;
+
             storedVotes = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, Vote>>(storedVotesDictionaryName);
             await base.RunAsync(cancellationToken);
         }
@@ -49,13 +53,34 @@ namespace Gerrymander.ServiceFabric.VotingSite
         /// <returns></returns>
         public async Task StoreVote(Vote vote)
         {
-            var transaction = this.StateManager.CreateTransaction();
-            await storedVotes.AddOrUpdateAsync(
-                transaction,
-                vote.VoteId.ToString(),
-                vote,
-                (_, __) => { return vote; });
-            await transaction.CommitAsync();
+            ITransaction transaction = null;
+            try
+            {
+                transaction = this.StateManager.CreateTransaction();
+                await storedVotes.AddOrUpdateAsync(
+                    transaction,
+                    vote.VoteId.ToString(),
+                    vote,
+                    (_, __) => { return vote; });
+            }
+            finally
+            {
+                await transaction.CommitAsync();
+            }
+        }
+
+        public async Task<List<Vote>> GetAllStoredVotes()
+        {
+            using (var transaction = this.StateManager.CreateTransaction())
+            {
+                List<Vote> votes = new List<Vote>();
+                var enumerator = (await storedVotes.CreateEnumerableAsync(transaction, EnumerationMode.Unordered)).GetAsyncEnumerator();
+                do
+                {
+                    votes.Add(enumerator.Current.Value);
+                } while (await enumerator.MoveNextAsync(cancellationToken));
+                return votes;
+            }
         }
     }
 }
