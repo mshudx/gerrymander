@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Gerrymander.VoteGenerator")]
+[assembly: AssemblyTitle("Gerrymander.ServiceFabric.ResultsApiService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Gerrymander.VoteGenerator")]
+[assembly: AssemblyProduct("Gerrymander.ServiceFabric.ResultsApiService")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3e4ce0ab-512d-40a7-b57e-6900c2861742")]
+[assembly: Guid("21a22098-2da1-4136-ba32-8d5e0f1a367b")]
 
 // Version information for an assembly consists of the following four values:
 //

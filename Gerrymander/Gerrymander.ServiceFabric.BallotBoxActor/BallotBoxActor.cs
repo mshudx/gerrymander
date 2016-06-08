@@ -51,11 +51,7 @@ namespace Gerrymander.ServiceFabric.BallotBoxActor
 
         private async Task ChangeIsOpenTo(bool value)
         {
-            if (await this.StateManager.ContainsStateAsync(isOpenStateName))
-            {
-                await this.StateManager.RemoveStateAsync(isOpenStateName);
-            }
-            await this.StateManager.AddStateAsync(isOpenStateName, value);
+            await this.StateManager.AddOrUpdateStateAsync(isOpenStateName, value, (_, __) => value);
         }
         #endregion
 
@@ -79,8 +75,8 @@ namespace Gerrymander.ServiceFabric.BallotBoxActor
 
         private async Task<string> ValidateVoteAsync(Vote vote)
         {
-            if (await this.StateManager.ContainsStateAsync(isOpenStateName) == false ||
-                await this.StateManager.GetStateAsync<bool>(isOpenStateName) == false)
+            var isOpen = await StateManager.GetOrAddStateAsync(isOpenStateName, false);
+            if (!isOpen)
             {
                 return "Vote validation error: ballot box is not open";
             }

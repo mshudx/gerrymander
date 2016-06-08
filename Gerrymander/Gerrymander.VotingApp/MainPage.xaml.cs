@@ -25,6 +25,8 @@ namespace Gerrymander.VotingApp
         public MainPage()
         {
             this.InitializeComponent();
+
+
         }
     }
 }
