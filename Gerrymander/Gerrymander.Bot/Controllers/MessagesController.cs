@@ -7,26 +7,39 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace Gerrymander.Bot
 {
     [BotAuthentication]
     public class MessagesController : ApiController
     {
+        private readonly LuisClient luisClient;
+
+        public MessagesController()
+        {
+            luisClient = new LuisClient(ConfigurationManager.AppSettings["LuisId"], ConfigurationManager.AppSettings["LuisKey"]);
+        }
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
         /// </summary>
         public async Task<Message> Post([FromBody]Message message)
         {
-            await Task.Yield();
             if (message.Type == "Message")
             {
-                // calculate something for us to return
-                int length = (message.Text ?? string.Empty).Length;
-
-                // return our reply to the user
-                return message.CreateReplyMessage($"You sent {length} characters");
+                try
+                {
+                    var result = await luisClient.ParseMessage(message.Text ?? string.Empty);
+                    var intent = result.intents[0];
+                    if (String.Equals(intent.intent, "None", StringComparison.InvariantCultureIgnoreCase))
+                        return message.CreateReplyMessage("Wat?!");
+                    return message.CreateReplyMessage("Hey, this is not implemented!");
+                }
+                catch(Exception e)
+                {
+                    return message.CreateReplyMessage($"An error occured: {e.Message}");
+                }
             }
             else
             {

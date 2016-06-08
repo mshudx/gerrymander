@@ -9,6 +9,7 @@ namespace Gerrymander.Bot
 {
     public static class WebApiConfig
     {
+
         public static void Register(HttpConfiguration config)
         {
             // Json settings
@@ -23,7 +24,6 @@ namespace Gerrymander.Bot
             };
 
             // Web API configuration and services
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 
