@@ -11,6 +11,7 @@ using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Data;
 using Gerrymander.ServiceFabric.VotingSite.Interfaces;
+using Gerrymander.ServiceFabric.VotingSite.Context;
 
 namespace Gerrymander.ServiceFabric.VotingSite
 {
@@ -39,7 +40,15 @@ namespace Gerrymander.ServiceFabric.VotingSite
                     var vote = await votes.TryDequeueAsync(transaction, TimeSpan.FromMinutes(1), cancellationToken);
                     if(vote.HasValue)
                     {
-
+                        using (var db = new gerrymanderEntities())
+                        {
+                            var candidate = db.Candidates.SingleOrDefault(c => c.Name == vote.Value.Candidate);
+                            if(candidate != null)
+                            {
+                                candidate.VoteCount = candidate.VoteCount + 1;
+                            }
+                            await db.SaveChangesAsync();
+                        }
                     }
                     await transaction.CommitAsync();
                 }

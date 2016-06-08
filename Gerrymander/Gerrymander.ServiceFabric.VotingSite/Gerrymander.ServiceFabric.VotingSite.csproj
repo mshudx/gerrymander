@@ -73,14 +73,50 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\Candidate.cs">
+      <DependentUpon>ElectionData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\ElectionData.Context.cs">
+      <DependentUpon>ElectionData.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Context\ElectionData.cs">
+      <DependentUpon>ElectionData.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Context\ElectionData.Designer.cs">
+      <DependentUpon>ElectionData.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Context\Party.cs">
+      <DependentUpon>ElectionData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\VotingDistrict.cs">
+      <DependentUpon>ElectionData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\VotingSite.cs">
+      <DependentUpon>ElectionData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VotingSite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ServiceEventSource.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Context\ElectionData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ElectionData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Context\ElectionData.edmx.diagram">
+      <DependentUpon>ElectionData.edmx</DependentUpon>
+    </None>
     <None Include="PackageRoot\Config\Settings.xml" />
     <None Include="PackageRoot\ServiceManifest.xml" />
     <None Include="App.config" />
@@ -98,6 +134,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Context\ElectionData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ElectionData.edmx</DependentUpon>
+      <LastGenOutput>ElectionData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Context\ElectionData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ElectionData.edmx</DependentUpon>
+      <LastGenOutput>ElectionData.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
