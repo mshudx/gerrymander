@@ -97,6 +97,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BotClient\BotClient.cs" />
+    <Compile Include="BotClient\BotClientExtensions.cs" />
+    <Compile Include="BotClient\IBotClient.cs" />
+    <Compile Include="BotClient\IResultsOperations.cs" />
+    <Compile Include="BotClient\Models\Results.cs" />
+    <Compile Include="BotClient\Models\ResultsByCandidate.cs" />
+    <Compile Include="BotClient\Models\ResultsByCandidateCollection.cs" />
+    <Compile Include="BotClient\Models\ResultsByDistrict.cs" />
+    <Compile Include="BotClient\Models\ResultsByDistrictCollection.cs" />
+    <Compile Include="BotClient\Models\ResultsByParty.cs" />
+    <Compile Include="BotClient\Models\ResultsByPartyCollection.cs" />
+    <Compile Include="BotClient\Models\ResultsBySite.cs" />
+    <Compile Include="BotClient\Models\ResultsBySiteCollection.cs" />
+    <Compile Include="BotClient\ResultsOperations.cs" />
+    <Compile Include="BotClient\ResultsOperationsExtensions.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

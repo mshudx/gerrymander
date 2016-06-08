@@ -27,6 +27,8 @@ namespace Gerrymander.ServiceFabric.ResultsApiService
                 .EnableSwagger(c => c.SingleApiVersion("v1", "Gerrymander Results API"))
                 .EnableSwaggerUi();
 
+            config.MapHttpAttributeRoutes();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

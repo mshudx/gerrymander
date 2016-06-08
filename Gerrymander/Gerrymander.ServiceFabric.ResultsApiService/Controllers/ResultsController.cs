@@ -5,15 +5,19 @@ using System.Web.Http;
 
 namespace Gerrymander.ServiceFabric.ResultsApiService.Controllers
 {
+    [RoutePrefix("api/results")]
     public class ResultsController : ApiController
     {
-        // GET api/values 
+        [Route("")]
+        [HttpGet]
         public async Task<Results> Get()
         {
             var result = new Results() { Votes = 1 };
             return result;
         }
 
+        [Route("candidates")]
+        [HttpGet]
         public async Task<IEnumerable<ResultsByCandidate>> GetByCandidates()
         {
             var result = new[]
@@ -22,13 +26,17 @@ namespace Gerrymander.ServiceFabric.ResultsApiService.Controllers
             };
             return result;
         }
-        // GET api/values/5 
+
+        [Route("candidates/{id:int}")]
+        [HttpGet]
         public async Task<ResultsByCandidate> GetByCandidate(string id)
         {
             var result = new ResultsByCandidate() { Votes = 1, CandidateId = "", CandidateName = "" };
             return result;
         }
 
+        [Route("districts")]
+        [HttpGet]
         public async Task<IEnumerable<ResultsByDistrict>> GetByDistricts()
         {
             var result = new[]
@@ -38,12 +46,16 @@ namespace Gerrymander.ServiceFabric.ResultsApiService.Controllers
             return result;
         }
 
+        [Route("districts/{id:int}")]
+        [HttpGet]
         public async Task<ResultsByDistrict> GetByDistrict(string id)
         {
             var result = new ResultsByDistrict() { Votes = 1, DistrictId = "", DistrictName = "" };
             return result;
         }
 
+        [Route("sites")]
+        [HttpGet]
         public async Task<IEnumerable<ResultsBySite>> GetBySites()
         {
             var result = new[]
@@ -53,12 +65,16 @@ namespace Gerrymander.ServiceFabric.ResultsApiService.Controllers
             return result;
         }
 
+        [Route("sites/{id:int}")]
+        [HttpGet]
         public async Task<ResultsBySite> GetBySite(string id)
         {
             var result = new ResultsBySite() { Votes = 1, SiteId = "", SiteName = "" };
             return result;
         }
 
+        [Route("parties")]
+        [HttpGet]
         public async Task<IEnumerable<ResultsByParty>> GetByParties()
         {
             var result = new[]
@@ -68,6 +84,8 @@ namespace Gerrymander.ServiceFabric.ResultsApiService.Controllers
             return result;
         }
 
+        [Route("parties/{id:int}")]
+        [HttpGet]
         public async Task<ResultsByParty> GetByParty(string id)
         {
             var result = new ResultsByParty() { Votes = 1, PartyId = "", PartyName = "" };
