@@ -16,10 +16,12 @@ namespace Gerrymander.Bot
     public class MessagesController : ApiController
     {
         private readonly LuisClient luisClient;
+        private readonly IResulstApiClient resultsApiClient;
 
         public MessagesController()
         {
             luisClient = new LuisClient(ConfigurationManager.AppSettings["LuisId"], ConfigurationManager.AppSettings["LuisKey"]);
+            resultsApiClient = new ResulstApiClient(new Uri(ConfigurationManager.AppSettings["ResultsApiUri"]));
         }
         /// <summary>
         /// POST: api/Messages
@@ -39,19 +41,19 @@ namespace Gerrymander.Bot
                     }
                     if (String.Equals(intent.intent, "QueryResults", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var response = await new ResulstApiClient().Results.GetAsync();
+                        var response = await resultsApiClient.Results.GetAsync();
                         return message.CreateReplyMessage($"The leading party is {response.LeadingParty} with {response.Votes} vote{(response.Votes > 0 ? "s" : "")}.");
                     }
                     if (String.Equals(intent.intent, "QueryPollResultsByParty", StringComparison.InvariantCultureIgnoreCase))
                     {
                         var partyId = parsedMessage.entities[0].entity;
-                        var response = await new ResulstApiClient().Results.GetByPartyAsync(partyId);
+                        var response = await resultsApiClient.Results.GetByPartyAsync(partyId);
                         return message.CreateReplyMessage($"The {response.PartyName} has {response.Votes} vote{(response.Votes > 0? "s": "")}.");
                     }
                     if (String.Equals(intent.intent, "QueryPollResultsByDistrict", StringComparison.InvariantCultureIgnoreCase))
                     {
                         var disctrictId = parsedMessage.entities[0].entity;
-                        var response = await new ResulstApiClient().Results.GetByDistrictAsync(disctrictId);
+                        var response = await resultsApiClient.Results.GetByDistrictAsync(disctrictId);
                         return message.CreateReplyMessage($"The {response.DistrictName} has {response.Votes} vote{(response.Votes > 0 ? "s" : "")}.");
                     }
                     return message.CreateReplyMessage("Hey, this is not implemented!");
