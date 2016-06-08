@@ -1,0 +1,58 @@
+{
+  "luis_schema_version": "1.2.0",
+  "name": "gerrymander",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "Name": "None",
+      "Children": []
+    },
+    {
+      "Name": "QueryPollResultsByDistrict",
+      "Children": []
+    },
+    {
+      "Name": "QueryPollResultsByParty",
+      "Children": []
+    }
+  ],
+  "entities": [
+    {
+      "Name": "District",
+      "Children": []
+    },
+    {
+      "Name": "Party",
+      "Children": []
+    }
+  ],
+  "bing_entities": [],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "who is leading in example?",
+      "intent": "QueryPollResultsByDistrict",
+      "entities": [
+        {
+          "entity": "District",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "how is example doing?",
+      "intent": "QueryPollResultsByParty",
+      "entities": [
+        {
+          "entity": "Party",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    }
+  ]
+}

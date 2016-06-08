@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="gerrymander.json" />
     <None Include="Properties\PublishProfiles\GerrymanderBot - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
