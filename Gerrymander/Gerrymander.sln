@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.ServiceFabric.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.ServiceFabric.BallotBoxActor.Interfaces", "Gerrymander.ServiceFabric.BallotBoxActor.Interfaces\Gerrymander.ServiceFabric.BallotBoxActor.Interfaces.csproj", "{74303127-0C51-47A5-A244-FF13E7F09847}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.ServiceFabric.VotingSite", "Gerrymander.ServiceFabric.VotingSite\Gerrymander.ServiceFabric.VotingSite.csproj", "{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,16 @@ Global
 		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|x64.ActiveCfg = Release|x64
 		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|x64.Build.0 = Release|x64
 		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|x86.ActiveCfg = Release|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Debug|ARM.ActiveCfg = Debug|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Debug|x64.ActiveCfg = Debug|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Debug|x64.Build.0 = Debug|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Debug|x86.ActiveCfg = Debug|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Release|Any CPU.ActiveCfg = Release|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Release|ARM.ActiveCfg = Release|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Release|x64.ActiveCfg = Release|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Release|x64.Build.0 = Release|x64
+		{9C8F36F4-1AD7-44E9-A8DB-733CA453937B}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
