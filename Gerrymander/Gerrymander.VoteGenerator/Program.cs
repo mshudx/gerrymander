@@ -14,7 +14,7 @@ namespace Gerrymander.VoteGenerator
         static void Main(string[] args)
         {
             //SubmitManualVote();
-            SubmitRandomVotes(1);
+            SubmitRandomVotes(100);
             Console.ReadLine();
         }
 
@@ -33,6 +33,9 @@ namespace Gerrymander.VoteGenerator
                 int currentSiteId = random.Next(votingSites.Count);
                 var votingSite = votingSites[currentSiteId];
 
+                // Generate a random ballot box id
+                string ballotBoxId = "Ballot Box " + random.Next(40).ToString();
+
                 // Select a random candidate in the voting district
                 var candidates = GetCandidatesByVotingDistrict(votingDistrict.Id);
                 int currentCandidateId = random.Next(candidates.Count);
@@ -42,9 +45,9 @@ namespace Gerrymander.VoteGenerator
                 var party = GetPartyByCandidate(candidate.Id);
 
                 // Submit the vote
-                SubmitVote(votingDistrict.Name, votingSite.Name, "(test ballot box)", party.Name, candidate.Name);
+                SubmitVote(votingDistrict.Name, votingSite.Name, ballotBoxId, party.Name, candidate.Name);
 
-                Console.WriteLine("Vote submitted for {0}, {1}, {2}, {3}, {4}", votingDistrict.Name, votingSite.Name, "(test ballot box)", party.Name, candidate.Name);
+                Console.WriteLine("Vote submitted for {0}, {1}, {2}, {3}, {4}", votingDistrict.Name, votingSite.Name, ballotBoxId, party.Name, candidate.Name);
             }
         }
 
@@ -98,8 +101,8 @@ namespace Gerrymander.VoteGenerator
         {
             gerrymanderEntities db = new gerrymanderEntities();
             var candidate = db.Candidates.First(c => c.Id == candidateId);
-            
-            return null;
+            var party = db.Parties.First(p => p.Id == candidate.Party);
+            return party;
         }
     }
 }
