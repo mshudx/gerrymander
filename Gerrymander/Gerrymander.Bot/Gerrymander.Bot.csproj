@@ -103,6 +103,21 @@
     </Compile>
     <Compile Include="LuisClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultsApiClient\IResulstApiClient.cs" />
+    <Compile Include="ResultsApiClient\IResultsOperations.cs" />
+    <Compile Include="ResultsApiClient\Models\Results.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsByCandidate.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsByCandidateCollection.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsByDistrict.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsByDistrictCollection.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsByParty.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsByPartyCollection.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsBySite.cs" />
+    <Compile Include="ResultsApiClient\Models\ResultsBySiteCollection.cs" />
+    <Compile Include="ResultsApiClient\ResulstApiClient.cs" />
+    <Compile Include="ResultsApiClient\ResulstApiClientExtensions.cs" />
+    <Compile Include="ResultsApiClient\ResultsOperations.cs" />
+    <Compile Include="ResultsApiClient\ResultsOperationsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

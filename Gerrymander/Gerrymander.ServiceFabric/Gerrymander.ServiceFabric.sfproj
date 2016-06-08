@@ -15,7 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gerrymander.ServiceFabric.BallotBoxActor\Gerrymander.ServiceFabric.BallotBoxActor.csproj" />
+    <ProjectReference Include="..\Gerrymander.ServiceFabric.ResultsApiService\Gerrymander.ServiceFabric.ResultsApiService.csproj" />
     <ProjectReference Include="..\Gerrymander.ServiceFabric.VotingApi\Gerrymander.ServiceFabric.VotingApi.csproj" />
+    <ProjectReference Include="..\Gerrymander.ServiceFabric.VotingSite\Gerrymander.ServiceFabric.VotingSite.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets" />
 </Project>

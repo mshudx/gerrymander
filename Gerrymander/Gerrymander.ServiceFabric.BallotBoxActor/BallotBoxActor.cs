@@ -8,6 +8,10 @@ using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
 using Gerrymander.ServiceFabric.BallotBoxActor.Interfaces;
 using Gerrymander.Common;
+using Gerrymander.ServiceFabric.VotingSite;
+using Microsoft.ServiceFabric.Services.Remoting.Client;
+using Microsoft.ServiceFabric.Services.Client;
+using Gerrymander.ServiceFabric.VotingSite.Interfaces;
 
 namespace Gerrymander.ServiceFabric.BallotBoxActor
 {
@@ -47,11 +51,7 @@ namespace Gerrymander.ServiceFabric.BallotBoxActor
 
         private async Task ChangeIsOpenTo(bool value)
         {
-            if (await this.StateManager.ContainsStateAsync(isOpenStateName))
-            {
-                await this.StateManager.RemoveStateAsync(isOpenStateName);
-            }
-            await this.StateManager.AddStateAsync(isOpenStateName, value);
+            await this.StateManager.AddOrUpdateStateAsync(isOpenStateName, value, (_, __) => value);
         }
         #endregion
 
@@ -65,15 +65,18 @@ namespace Gerrymander.ServiceFabric.BallotBoxActor
             }
             else
             {
+                IVotingSite votingSiteClient = ServiceProxy.Create<IVotingSite>(
+                   serviceUri: new Uri("fabric:/Gerrymander.ServiceFabric/VotingSiteService"),
+                   partitionKey: new ServicePartitionKey(vote.VotingDistrict));
+                await votingSiteClient.StoreVoteAsync(vote);
                 return null;
-                // TODO forward to Voting Site SFS
             }
         }
 
         private async Task<string> ValidateVoteAsync(Vote vote)
         {
-            if (await this.StateManager.ContainsStateAsync(isOpenStateName) == false ||
-                await this.StateManager.GetStateAsync<bool>(isOpenStateName) == false)
+            var isOpen = await StateManager.GetOrAddStateAsync(isOpenStateName, false);
+            if (!isOpen)
             {
                 return "Vote validation error: ballot box is not open";
             }

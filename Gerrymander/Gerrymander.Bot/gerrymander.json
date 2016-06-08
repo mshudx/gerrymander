@@ -13,6 +13,10 @@
       "Children": []
     },
     {
+      "Name": "QueryResults",
+      "Children": []
+    },
+    {
       "Name": "QueryPollResultsByParty",
       "Children": []
     }
@@ -53,6 +57,11 @@
           "endPos": 2
         }
       ]
+    },
+    {
+      "text": "what is the election results?",
+      "intent": "QueryResults",
+      "entities": []
     }
   ]
 }
