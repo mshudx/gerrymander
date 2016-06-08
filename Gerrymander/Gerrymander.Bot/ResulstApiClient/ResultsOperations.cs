@@ -8,14 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Gerrymander.Bot;
-using Gerrymander.Bot.Models;
+using Gerrymander.ResulstApi;
+using Gerrymander.ResulstApi.Models;
 using Microsoft.Rest;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot
+namespace Gerrymander.ResulstApi
 {
-    internal partial class ResultsOperations : IServiceOperations<BotClient>, IResultsOperations
+    internal partial class ResultsOperations : IServiceOperations<ResulstApiClient>, IResultsOperations
     {
         /// <summary>
         /// Initializes a new instance of the ResultsOperations class.
@@ -23,17 +23,17 @@ namespace Gerrymander.Bot
         /// <param name='client'>
         /// Reference to the service client.
         /// </param>
-        internal ResultsOperations(BotClient client)
+        internal ResultsOperations(ResulstApiClient client)
         {
             this._client = client;
         }
         
-        private BotClient _client;
+        private ResulstApiClient _client;
         
         /// <summary>
-        /// Gets a reference to the Gerrymander.Bot.BotClient.
+        /// Gets a reference to the Gerrymander.ResulstApi.ResulstApiClient.
         /// </summary>
-        public BotClient Client
+        public ResulstApiClient Client
         {
             get { return this._client; }
         }

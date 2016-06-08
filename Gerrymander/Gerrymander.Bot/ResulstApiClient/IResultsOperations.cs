@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Gerrymander.Bot.Models;
+using Gerrymander.ResulstApi.Models;
 using Microsoft.Rest;
 
-namespace Gerrymander.Bot
+namespace Gerrymander.ResulstApi
 {
     public partial interface IResultsOperations
     {

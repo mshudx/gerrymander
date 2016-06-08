@@ -5,30 +5,30 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot.Models
+namespace Gerrymander.ResulstApi.Models
 {
-    public partial class ResultsByCandidate
+    public partial class ResultsBySite
     {
-        private string _candidateId;
+        private string _siteId;
         
         /// <summary>
         /// Optional.
         /// </summary>
-        public string CandidateId
+        public string SiteId
         {
-            get { return this._candidateId; }
-            set { this._candidateId = value; }
+            get { return this._siteId; }
+            set { this._siteId = value; }
         }
         
-        private string _candidateName;
+        private string _siteName;
         
         /// <summary>
         /// Optional.
         /// </summary>
-        public string CandidateName
+        public string SiteName
         {
-            get { return this._candidateName; }
-            set { this._candidateName = value; }
+            get { return this._siteName; }
+            set { this._siteName = value; }
         }
         
         private int? _votes;
@@ -43,9 +43,9 @@ namespace Gerrymander.Bot.Models
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResultsByCandidate class.
+        /// Initializes a new instance of the ResultsBySite class.
         /// </summary>
-        public ResultsByCandidate()
+        public ResultsBySite()
         {
         }
         
@@ -56,15 +56,15 @@ namespace Gerrymander.Bot.Models
         {
             if (inputObject != null && inputObject.Type != JTokenType.Null)
             {
-                JToken candidateIdValue = inputObject["candidateId"];
-                if (candidateIdValue != null && candidateIdValue.Type != JTokenType.Null)
+                JToken siteIdValue = inputObject["siteId"];
+                if (siteIdValue != null && siteIdValue.Type != JTokenType.Null)
                 {
-                    this.CandidateId = ((string)candidateIdValue);
+                    this.SiteId = ((string)siteIdValue);
                 }
-                JToken candidateNameValue = inputObject["candidateName"];
-                if (candidateNameValue != null && candidateNameValue.Type != JTokenType.Null)
+                JToken siteNameValue = inputObject["siteName"];
+                if (siteNameValue != null && siteNameValue.Type != JTokenType.Null)
                 {
-                    this.CandidateName = ((string)candidateNameValue);
+                    this.SiteName = ((string)siteNameValue);
                 }
                 JToken votesValue = inputObject["votes"];
                 if (votesValue != null && votesValue.Type != JTokenType.Null)

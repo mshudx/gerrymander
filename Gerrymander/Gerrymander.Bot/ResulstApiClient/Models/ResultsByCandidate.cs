@@ -5,30 +5,30 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot.Models
+namespace Gerrymander.ResulstApi.Models
 {
-    public partial class ResultsByDistrict
+    public partial class ResultsByCandidate
     {
-        private string _districtId;
+        private string _candidateId;
         
         /// <summary>
         /// Optional.
         /// </summary>
-        public string DistrictId
+        public string CandidateId
         {
-            get { return this._districtId; }
-            set { this._districtId = value; }
+            get { return this._candidateId; }
+            set { this._candidateId = value; }
         }
         
-        private string _districtName;
+        private string _candidateName;
         
         /// <summary>
         /// Optional.
         /// </summary>
-        public string DistrictName
+        public string CandidateName
         {
-            get { return this._districtName; }
-            set { this._districtName = value; }
+            get { return this._candidateName; }
+            set { this._candidateName = value; }
         }
         
         private int? _votes;
@@ -43,9 +43,9 @@ namespace Gerrymander.Bot.Models
         }
         
         /// <summary>
-        /// Initializes a new instance of the ResultsByDistrict class.
+        /// Initializes a new instance of the ResultsByCandidate class.
         /// </summary>
-        public ResultsByDistrict()
+        public ResultsByCandidate()
         {
         }
         
@@ -56,15 +56,15 @@ namespace Gerrymander.Bot.Models
         {
             if (inputObject != null && inputObject.Type != JTokenType.Null)
             {
-                JToken districtIdValue = inputObject["districtId"];
-                if (districtIdValue != null && districtIdValue.Type != JTokenType.Null)
+                JToken candidateIdValue = inputObject["candidateId"];
+                if (candidateIdValue != null && candidateIdValue.Type != JTokenType.Null)
                 {
-                    this.DistrictId = ((string)districtIdValue);
+                    this.CandidateId = ((string)candidateIdValue);
                 }
-                JToken districtNameValue = inputObject["districtName"];
-                if (districtNameValue != null && districtNameValue.Type != JTokenType.Null)
+                JToken candidateNameValue = inputObject["candidateName"];
+                if (candidateNameValue != null && candidateNameValue.Type != JTokenType.Null)
                 {
-                    this.DistrictName = ((string)districtNameValue);
+                    this.CandidateName = ((string)candidateNameValue);
                 }
                 JToken votesValue = inputObject["votes"];
                 if (votesValue != null && votesValue.Type != JTokenType.Null)

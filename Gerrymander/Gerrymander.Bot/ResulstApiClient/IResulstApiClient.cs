@@ -3,12 +3,12 @@
 
 using System;
 using System.Linq;
-using Gerrymander.Bot;
+using Gerrymander.ResulstApi;
 using Microsoft.Rest;
 
-namespace Gerrymander.Bot
+namespace Gerrymander.ResulstApi
 {
-    public partial interface IBotClient : IDisposable
+    public partial interface IResulstApiClient : IDisposable
     {
         /// <summary>
         /// The base URI of the service.

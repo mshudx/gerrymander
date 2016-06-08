@@ -6,16 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Gerrymander.Bot;
-using Gerrymander.Bot.Models;
+using Gerrymander.ResulstApi;
+using Gerrymander.ResulstApi.Models;
 using Microsoft.Rest;
 
-namespace Gerrymander.Bot
+namespace Gerrymander.ResulstApi
 {
     public static partial class ResultsOperationsExtensions
     {
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         public static Results Get(this IResultsOperations operations)
         {
@@ -27,19 +27,19 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
         public static async Task<Results> GetAsync(this IResultsOperations operations, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<Gerrymander.Bot.Models.Results> result = await operations.GetWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<Gerrymander.ResulstApi.Models.Results> result = await operations.GetWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -54,7 +54,7 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -64,12 +64,12 @@ namespace Gerrymander.Bot
         /// </param>
         public static async Task<ResultsByCandidate> GetByCandidateAsync(this IResultsOperations operations, string id, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<Gerrymander.Bot.Models.ResultsByCandidate> result = await operations.GetByCandidateWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<Gerrymander.ResulstApi.Models.ResultsByCandidate> result = await operations.GetByCandidateWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         public static IList<ResultsByCandidate> GetByCandidates(this IResultsOperations operations)
         {
@@ -81,19 +81,19 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
         public static async Task<IList<ResultsByCandidate>> GetByCandidatesAsync(this IResultsOperations operations, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.Bot.Models.ResultsByCandidate>> result = await operations.GetByCandidatesWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.ResulstApi.Models.ResultsByCandidate>> result = await operations.GetByCandidatesWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -108,7 +108,7 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -118,12 +118,12 @@ namespace Gerrymander.Bot
         /// </param>
         public static async Task<ResultsByDistrict> GetByDistrictAsync(this IResultsOperations operations, string id, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<Gerrymander.Bot.Models.ResultsByDistrict> result = await operations.GetByDistrictWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<Gerrymander.ResulstApi.Models.ResultsByDistrict> result = await operations.GetByDistrictWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         public static IList<ResultsByDistrict> GetByDistricts(this IResultsOperations operations)
         {
@@ -135,19 +135,19 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
         public static async Task<IList<ResultsByDistrict>> GetByDistrictsAsync(this IResultsOperations operations, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.Bot.Models.ResultsByDistrict>> result = await operations.GetByDistrictsWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.ResulstApi.Models.ResultsByDistrict>> result = await operations.GetByDistrictsWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         public static IList<ResultsByParty> GetByParties(this IResultsOperations operations)
         {
@@ -159,19 +159,19 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
         public static async Task<IList<ResultsByParty>> GetByPartiesAsync(this IResultsOperations operations, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.Bot.Models.ResultsByParty>> result = await operations.GetByPartiesWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.ResulstApi.Models.ResultsByParty>> result = await operations.GetByPartiesWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -186,7 +186,7 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -196,12 +196,12 @@ namespace Gerrymander.Bot
         /// </param>
         public static async Task<ResultsByParty> GetByPartyAsync(this IResultsOperations operations, string id, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<Gerrymander.Bot.Models.ResultsByParty> result = await operations.GetByPartyWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<Gerrymander.ResulstApi.Models.ResultsByParty> result = await operations.GetByPartyWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -216,7 +216,7 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='id'>
         /// Required.
@@ -226,12 +226,12 @@ namespace Gerrymander.Bot
         /// </param>
         public static async Task<ResultsBySite> GetBySiteAsync(this IResultsOperations operations, string id, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<Gerrymander.Bot.Models.ResultsBySite> result = await operations.GetBySiteWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<Gerrymander.ResulstApi.Models.ResultsBySite> result = await operations.GetBySiteWithOperationResponseAsync(id, cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         public static IList<ResultsBySite> GetBySites(this IResultsOperations operations)
         {
@@ -243,14 +243,14 @@ namespace Gerrymander.Bot
         }
         
         /// <param name='operations'>
-        /// Reference to the Gerrymander.Bot.IResultsOperations.
+        /// Reference to the Gerrymander.ResulstApi.IResultsOperations.
         /// </param>
         /// <param name='cancellationToken'>
         /// Cancellation token.
         /// </param>
         public static async Task<IList<ResultsBySite>> GetBySitesAsync(this IResultsOperations operations, CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.Bot.Models.ResultsBySite>> result = await operations.GetBySitesWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
+            Microsoft.Rest.HttpOperationResponse<System.Collections.Generic.IList<Gerrymander.ResulstApi.Models.ResultsBySite>> result = await operations.GetBySitesWithOperationResponseAsync(cancellationToken).ConfigureAwait(false);
             return result.Body;
         }
     }

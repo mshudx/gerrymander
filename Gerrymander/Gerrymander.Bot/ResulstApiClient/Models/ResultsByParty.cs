@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot.Models
+namespace Gerrymander.ResulstApi.Models
 {
     public partial class ResultsByParty
     {

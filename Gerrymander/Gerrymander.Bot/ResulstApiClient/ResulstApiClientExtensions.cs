@@ -4,9 +4,9 @@
 using System;
 using System.Linq;
 
-namespace Gerrymander.Bot
+namespace Gerrymander.ResulstApi
 {
-    public static partial class BotClientExtensions
+    public static partial class ResulstApiClientExtensions
     {
     }
 }

@@ -4,24 +4,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Gerrymander.Bot.Models;
+using Gerrymander.ResulstApi.Models;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot.Models
+namespace Gerrymander.ResulstApi.Models
 {
-    public static partial class ResultsByPartyCollection
+    public static partial class ResultsBySiteCollection
     {
         /// <summary>
         /// Deserialize the object
         /// </summary>
-        public static IList<ResultsByParty> DeserializeJson(JToken inputObject)
+        public static IList<ResultsBySite> DeserializeJson(JToken inputObject)
         {
-            IList<ResultsByParty> deserializedObject = new List<ResultsByParty>();
+            IList<ResultsBySite> deserializedObject = new List<ResultsBySite>();
             foreach (JToken iListValue in ((JArray)inputObject))
             {
-                ResultsByParty resultsByParty = new ResultsByParty();
-                resultsByParty.DeserializeJson(iListValue);
-                deserializedObject.Add(resultsByParty);
+                ResultsBySite resultsBySite = new ResultsBySite();
+                resultsBySite.DeserializeJson(iListValue);
+                deserializedObject.Add(resultsBySite);
             }
             return deserializedObject;
         }

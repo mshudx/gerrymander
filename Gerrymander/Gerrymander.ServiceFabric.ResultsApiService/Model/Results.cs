@@ -9,5 +9,6 @@ namespace Gerrymander.ServiceFabric.ResultsApiService.Model
     public class Results
     {
         public int Votes { get; set; }
+        public string LeadingParty { get; set; }
     }
 }

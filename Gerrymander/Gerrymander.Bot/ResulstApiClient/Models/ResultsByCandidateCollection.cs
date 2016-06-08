@@ -4,10 +4,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Gerrymander.Bot.Models;
+using Gerrymander.ResulstApi.Models;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot.Models
+namespace Gerrymander.ResulstApi.Models
 {
     public static partial class ResultsByCandidateCollection
     {

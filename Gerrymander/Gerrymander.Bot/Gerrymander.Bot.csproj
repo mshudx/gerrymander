@@ -97,27 +97,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="BotClient\BotClient.cs" />
-    <Compile Include="BotClient\BotClientExtensions.cs" />
-    <Compile Include="BotClient\IBotClient.cs" />
-    <Compile Include="BotClient\IResultsOperations.cs" />
-    <Compile Include="BotClient\Models\Results.cs" />
-    <Compile Include="BotClient\Models\ResultsByCandidate.cs" />
-    <Compile Include="BotClient\Models\ResultsByCandidateCollection.cs" />
-    <Compile Include="BotClient\Models\ResultsByDistrict.cs" />
-    <Compile Include="BotClient\Models\ResultsByDistrictCollection.cs" />
-    <Compile Include="BotClient\Models\ResultsByParty.cs" />
-    <Compile Include="BotClient\Models\ResultsByPartyCollection.cs" />
-    <Compile Include="BotClient\Models\ResultsBySite.cs" />
-    <Compile Include="BotClient\Models\ResultsBySiteCollection.cs" />
-    <Compile Include="BotClient\ResultsOperations.cs" />
-    <Compile Include="BotClient\ResultsOperationsExtensions.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LuisClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResulstApiClient\IResulstApiClient.cs" />
+    <Compile Include="ResulstApiClient\IResultsOperations.cs" />
+    <Compile Include="ResulstApiClient\Models\Results.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsByCandidate.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsByCandidateCollection.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsByDistrict.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsByDistrictCollection.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsByParty.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsByPartyCollection.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsBySite.cs" />
+    <Compile Include="ResulstApiClient\Models\ResultsBySiteCollection.cs" />
+    <Compile Include="ResulstApiClient\ResulstApiClient.cs" />
+    <Compile Include="ResulstApiClient\ResulstApiClientExtensions.cs" />
+    <Compile Include="ResulstApiClient\ResultsOperations.cs" />
+    <Compile Include="ResulstApiClient\ResultsOperationsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

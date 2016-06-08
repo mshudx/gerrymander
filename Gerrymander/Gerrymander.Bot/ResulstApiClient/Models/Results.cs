@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Gerrymander.Bot.Models
+namespace Gerrymander.ResulstApi.Models
 {
     public partial class Results
     {
@@ -19,7 +19,15 @@ namespace Gerrymander.Bot.Models
             get { return this._votes; }
             set { this._votes = value; }
         }
-        
+
+        private string _leadingParty;
+
+        public string LeadingParty
+        {
+            get { return this._leadingParty; }
+            set { this._leadingParty = value; }
+        }
+
         /// <summary>
         /// Initializes a new instance of the Results class.
         /// </summary>
@@ -38,6 +46,12 @@ namespace Gerrymander.Bot.Models
                 if (votesValue != null && votesValue.Type != JTokenType.Null)
                 {
                     this.Votes = ((int)votesValue);
+                }
+
+                JToken leadingPartyValue = inputObject["leadingParty"];
+                if (leadingPartyValue != null && leadingPartyValue.Type != JTokenType.Null)
+                {
+                    this.LeadingParty = ((string)leadingPartyValue);
                 }
             }
         }
