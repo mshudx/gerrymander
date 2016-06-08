@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.VotingApp", "Ge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.Bot", "Gerrymander.Bot\Gerrymander.Bot.csproj", "{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.ServiceFabric.BallotBoxActor", "Gerrymander.ServiceFabric.BallotBoxActor\Gerrymander.ServiceFabric.BallotBoxActor.csproj", "{7519AF23-80E2-4AB0-8F74-F25C4B82859B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gerrymander.ServiceFabric.BallotBoxActor.Interfaces", "Gerrymander.ServiceFabric.BallotBoxActor.Interfaces\Gerrymander.ServiceFabric.BallotBoxActor.Interfaces.csproj", "{74303127-0C51-47A5-A244-FF13E7F09847}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,26 @@ Global
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|x64.Build.0 = Release|Any CPU
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|x86.ActiveCfg = Release|Any CPU
 		{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}.Release|x86.Build.0 = Release|Any CPU
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Debug|ARM.ActiveCfg = Debug|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Debug|x64.ActiveCfg = Debug|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Debug|x64.Build.0 = Debug|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Debug|x86.ActiveCfg = Debug|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Release|Any CPU.ActiveCfg = Release|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Release|ARM.ActiveCfg = Release|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Release|x64.ActiveCfg = Release|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Release|x64.Build.0 = Release|x64
+		{7519AF23-80E2-4AB0-8F74-F25C4B82859B}.Release|x86.ActiveCfg = Release|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Debug|ARM.ActiveCfg = Debug|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Debug|x64.ActiveCfg = Debug|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Debug|x64.Build.0 = Debug|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Debug|x86.ActiveCfg = Debug|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|Any CPU.ActiveCfg = Release|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|ARM.ActiveCfg = Release|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|x64.ActiveCfg = Release|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|x64.Build.0 = Release|x64
+		{74303127-0C51-47A5-A244-FF13E7F09847}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
